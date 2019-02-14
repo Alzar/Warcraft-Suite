@@ -1,0 +1,18 @@
+{
+    "recruitment": {
+        "raiderclass": {
+            "tab": "wowsuite",
+            "controller": "raiderclass",
+            "do": "",
+            "restriction": "update_recruitment"
+        }
+    },
+    "progression": {
+        "raids": {
+            "tab": "wowsuite",
+            "controller": "raids",
+            "do": "",
+            "restriction": "raids_manage"
+        }
+    }
+}

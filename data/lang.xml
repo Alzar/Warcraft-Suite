@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="wowsuite" version="10000">
+  <word key="__app_wowsuite" js="0">Warcraft Suite</word>
+  <word key="menutab__wowsuite" js="0">Warcraft Suite</word>
+  <word key="menutab__wowsuite_icon" js="0">shield</word>
+  <word key="group__wowsuite_UpdateFrontEnd" js="0">Warcraft Suite</word>
+  <word key="module__wowsuite_recruitment" js="0">Update Raid Team Recruitment</word>
+  <word key="module__wowsuite_progress" js="0">Update Raid Progression</word>
+  <word key="node_current_tier" js="0">Current Raid Tier</word>
+  <word key="node_boss_undefeated" js="0">Undefeated</word>
+  <word key="node_boss_normal" js="0">Normal</word>
+  <word key="node_boss_heroic" js="0">Heroic</word>
+  <word key="node_boss_mythic" js="0">Mythic</word>
+  <word key="node_boss_open" js="0">Recruiting Open</word>
+  <word key="node_boss_closed" js="0">Recruiting Closed</word>
+  <word key="progress_insuf_perms" js="0">You Do Not Have Permission To Do This!</word>
+  <word key="recruit_insuf_perms" js="0">You Do Not Have Permission To Do This!</word>
+  <word key="menu__recruitment_recruitment" js="0">Recruitment</word>
+  <word key="menu__wowsuite_recruitment" js="0">Raid Team Recruitment</word>
+  <word key="menu__recruitment_recruitment_needed_specs" js="0">Recruitment Needs</word>
+  <word key="menu__wowsuite_recruitment_raiderclass" js="0"><![CDATA[Classes & Specs]]></word>
+  <word key="menu__wowsuite_progression" js="0">Raid Progression</word>
+  <word key="menu__wowsuite_progression_raids" js="0"><![CDATA[Raids & Bosses]]></word>
+  <word key="login_handler_BattleNet" js="0">Battle.net</word>
+  <word key="login_handler_BattleNet_info" js="0"><![CDATA[Create a client <a href='https://develop.battle.net/access/' target='_blank'>here</a> to get Client ID and Client Secret. The Redirect URL to use is <code>%s</code>]]></word>
+  <word key="login_battle_tag" js="0">Set Username As BattleTag?</word>
+  <word key="login_battle_tag_bnet" js="0">Enabled</word>
+  <word key="login_battle_tag_disabled" js="0">Disabled</word>
+  <word key="login_bnet_client" js="0">Client ID</word>
+  <word key="login_bnet_secret" js="0">Client Secret</word>
+  <word key="login_battlenet" js="0">Login With Battle.net</word>
+  <word key="r__needed_specs" js="0">Recruitment Needs</word>
+  <word key="r__needed_specs_manage" js="0">Manage Recruitment Needs</word>
+  <word key="recruitment_is_open" js="0">Is Recruitment Open?</word>
+  <word key="recruitment_widget_title" js="0">Widget Title</word>
+  <word key="recruitment_widget_title_default" js="0">Recruitment</word>
+  <word key="recruitment_widget_title_label" js="0">Widget Title</word>
+  <word key="recruitment_widget_btn_link" js="0">Apply Button Link</word>
+  <word key="recruitment_widget_btn_link_default" js="0">https://faceroll.org/index.php?/recruitment/</word>
+  <word key="can_edit_needs" js="0">Can edit recruitment needs?</word>
+  <word key="block_recruitment" js="0">Guild Recruitment</word>
+  <word key="block_progression" js="0">Complete Raid Progression</word>
+  <word key="block_tier" js="0">Current Tier Progression</word>
+  <word key="block_info" js="0">Guild Info</word>
+  <word key="block_rank" js="0">Guild Rank Info</word>
+  <word key="progression_widget_title" js="0">Widget Title</word>
+  <word key="tier_widget_title" js="0">Widget Title</word>
+  <word key="tier_show_old" js="0">Show previous raid tier's condensed progression?</word>
+  <word key="tier_max_old" js="0">How many previous tiers do you want to display?</word>
+  <word key="progression_widget_title_default" js="0">Raid Progression</word>
+  <word key="tier_widget_title_default" js="0">Raid Progression</word>
+  <word key="can_update_progression" js="0">Can update guild raid progression?</word>
+  <word key="wowsuite_raids_header" js="0">Raids</word>
+  <word key="wowsuite_raids_header_add_child" js="0">Add Raid Boss</word>
+  <word key="wowsuite_boss_header" js="0">Raid Bosses</word>
+  <word key="add_raid" js="0">Add Raid</word>
+  <word key="edit_raid" js="0">Edit Raid</word>
+  <word key="raid_settings" js="0">Raid Settings</word>
+  <word key="raid_name" js="0">Raid Name</word>
+  <word key="raid_abv" js="0">Raid Abbreviation</word>
+  <word key="raid_image" js="0">Raid Widget Image</word>
+  <word key="raid_current_tier" js="0">Is This The Current Tier?</word>
+  <word key="add_boss" js="0">Add Raid Boss</word>
+  <word key="edit_boss" js="0">Edit Raid Boss</word>
+  <word key="boss_settings" js="0">Raid Boss Settings</word>
+  <word key="boss_name" js="0">Boss Name</word>
+  <word key="boss_instance" js="0">Raid</word>
+  <word key="boss_abv" js="0">Boss Abbreviation</word>
+  <word key="boss_video" js="0">Kill Video Link</word>
+  <word key="boss_normal" js="0">Killed On Normal?</word>
+  <word key="boss_heroic" js="0">Killed On Heroic?</word>
+  <word key="boss_mythic" js="0">Killed On Mythic?</word>
+  <word key="boss_video " js="0">Kill Video</word>
+  <word key="wowsuite_class_header" js="0">Recruitment</word>
+  <word key="class_settings" js="0">Class Settings</word>
+  <word key="class_name" js="0">Name</word>
+  <word key="class_abv" js="0">Abbreviation</word>
+  <word key="class_icon" js="0">Icon</word>
+  <word key="class_color" js="0">Color</word>
+  <word key="wowsuite_class_header_add_child" js="0">Add Spec</word>
+  <word key="spec_settings" js="0">Spec Settings</word>
+  <word key="spec_name" js="0">Name</word>
+  <word key="spec_abv" js="0">Abbreviation</word>
+  <word key="spec_class" js="0">Class</word>
+  <word key="spec_icon" js="0">Icon</word>
+  <word key="spec_recruiting" js="0">Recruiting This Spec?</word>
+  <word key="info_widget_title_default" js="0">Guild Info</word>
+  <word key="info_widget_disc_link_default" js="0">https://discordapp.com/</word>
+  <word key="info_widget_title" js="0">Widget Title</word>
+  <word key="info_widget_disc_link" js="0">Discord Link</word>
+ </app>
+</language>

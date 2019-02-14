@@ -1,0 +1,32 @@
+<ips:template parameters="$title, $link, $classes, $specs, $date" />
+<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="recruitSidebar">
+  <div class="recruit2">
+		<p style="text-align: center; font-size: 12px; padding-left: 10px; padding-right: 10px;">
+			Below is our current recruitment need, any roles marked as open are roles we're actively looking to fill. If your class & spec is listed as closed but you feel you're an exceptional player feel free to apply regardless!
+		</p>
+		{{if member.group['can_edit_needs'] }}
+			<a class="ipsSpacer_top ipsSpacer_half recUpdate" href="/recruitment/update" style="text-align: center;">Update Recruitment</a>
+		{{endif}}
+		<table class="recruit">
+			{{foreach $classes as $class}}
+				<tr class="{$class['class_abv']}">
+					<td class="classTitle">{$class['class_name']}</td>
+					<td class="specTitle">
+					{{foreach $specs as $spec}}
+						{{if $spec['spec_class'] == $class['class_id']}}
+							<img src="/uploads/{$spec['spec_icon']}" class="{{if $spec['spec_recruiting']}}open {{else}}closed{{endif}} {$class['class_abv']}_{$spec['spec_abv']} specImg" title="{$spec['spec_name']} {$class['class_name']} recruitment is {{if $spec['spec_recruiting']}}open{{else}}closed{{endif}}"> 
+						{{endif}}
+					{{endforeach}}
+					</td>
+				</tr>
+			{{endforeach}}
+		</table>
+		{{foreach $date as $updated}}
+			<span class="last-updated">Last Updated: {$updated['last_updated']}</span>
+		{{endforeach}}
+		<a class="ipsButton ipsButton_medium ipsButton_important raiderApply" href="{$link}" rel="external nofollow" target="_blank">Apply</a>
+  </div>
+</div>

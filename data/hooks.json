@@ -1,0 +1,6 @@
+{
+    "bnetLogin": {
+        "type": "C",
+        "class": "\\IPS\\Login\\Handler"
+    }
+}

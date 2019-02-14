@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="Default" author_name="Invision Power Services, Inc" author_url="https://www.invisioncommunity.com">
+ <template template_group="forms" template_name="prog_update" template_data="$raids, $bosses, $diffTags, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar=NULL, $form=NULL, $errorTabs=array()" template_location="front" template_app="wowsuite"><![CDATA[
+<div class='ipsBox'>
+    <form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm data-ipsFormSubmit>
+        <input type="hidden" name="{$id}_submitted" value="1">
+        {{foreach $raids as $raid}}
+            <div id="raid_{$raid['raid_abv']}" class="raid-container">
+            <table class="raid-table">
+            <tr><th colspan=4>{$raid['raid_name']}</th></tr>
+            {{foreach $bosses as $boss}}
+                {{if $boss['boss_instance'] == $raid['raid_id']}}
+                    <tr class="boss-name"><th colspan=4>{$boss['boss_name']}</th></tr>
+                    <tr class="boss-kill-container">
+                        {{foreach $diffTags as $diff}}
+                            <td><label class="{$diff}" for="boss_{$boss['boss_abv']}_{$diff}"></label><input class="ipsToggle" type="hidden" name="boss_{$boss['boss_abv']}_{$diff}"><input class="ipsToggle" type="checkbox" name="boss_{$boss['boss_abv']}_{$diff}_checkbox" {{if $boss['boss_'.$diff] == 1}} checked {{endif}}></td>
+                        {{endforeach}}
+                        <td><input type="text" name="boss_{$boss['boss_abv']}_video" placeholder="Kill Video Link" {{if $boss['boss_video'] != NULL}} value="{$boss['boss_video']}" {{endif}}></td>
+                    </tr>
+                {{endif}}
+            {{endforeach}}
+            </table>
+        {{endforeach}}
+
+        <div class='ipsAreaBackground ipsPad ipsType_center'>
+			<button type='submit' class='ipsButton ipsButton_medium ipsButton_primary' tabindex="1" accesskey="s" role="button">Update</button>
+		</div>
+    </form>
+</div>]]></template>
+ <template template_group="forms" template_name="pupdate" template_data="$raids, $bosses, $diffTags, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" template_location="front" template_app="wowsuite"><![CDATA[<h1>Hello!</h1>
+<form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		{{if is_array($v)}}
+			{{foreach $v as $_k => $_v}}
+				<input type="hidden" name="{$k}[{$_k}]" value="{$_v}">
+			{{endforeach}}
+		{{else}}
+			<input type="hidden" name="{$k}" value="{$v}">
+		{{endif}}
+	{{endforeach}}
+	{{if $form->error}}
+		<div class="ipsMessage ipsMessage_error">
+			{$form->error}
+		</div>
+	{{endif}}
+	<div class="ipsPad">
+		<ul class='ipsList_reset'>
+        {{foreach $elements as $name => $contents}}
+					<div id='ipsTabs_tabs_{$id}_{$id}_tab_{$name}_panel' class="ipsTabs_panel ipsPad" aria-labelledby="{$id}_tab_{$name}" aria-hidden="false">
+							<ul class='ipsForm ipsForm_vertical'>
+								{{foreach $contents as $inputName => $input}}
+                                    {$input|raw}
+								{{endforeach}}
+							</ul>
+					</div>
+				{{endforeach}}
+		</ul>
+	</div>
+	<ul class="ipsPad ipsList_reset ipsClearfix">
+		{{foreach $actionButtons as $button}}
+			<li>{$button|raw}</li>
+		{{endforeach}}
+	</ul>
+</form>]]></template>
+ <template template_group="global" template_name="prog_update" template_data="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL, $raids, $bosses" template_location="front" template_app="wowsuite"><![CDATA[
+<div class="tab">
+    <form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm data-ipsFormSubmit>
+    {{foreach $raids as $raid}}
+        <div id="{$raid['raid_abv']}" class="tabcontent">
+        {{foreach $bosses as $boss}}
+            {{if $boss['boss_instance'] == $raid['raid_id']}}
+                <span>{$boss['boss_name']}</span><input type="checkbox">
+            {{endif}}
+        {{endforeach}}
+    {{endforeach}}
+</div>]]></template>
+ <template template_group="widgets" template_name="info" template_data="$title, $discord" template_location="front" template_app="wowsuite"><![CDATA[
+<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="recruitSidebar">
+    <div class="recruit2">
+        <div class="info-sidebar">
+        <div class="info-sidebar-section">
+            <div class="sidebar-section-header">
+                <h1>Server Info</h1>
+            </div>
+            <div class="sidebar-section-content">
+                <span>US - Arthas - Horde</span>
+            </div>
+        </div>
+
+        <div class="info-sidebar-section">
+            <div class="sidebar-section-header">
+                <h1>Raid Schedule</h1>
+            </div>
+            <div class="sidebar-section-content">
+                <p>Friday | 10pm - 1:30am EST</p>
+                <p>Saturday | 10pm - 1:30am EST</p>
+            </div>
+        </div>
+
+        <div class="info-sidebar-section">
+            <div class="sidebar-section-header" id="discord-container">
+                <a class="ipsButton ipsButton_medium ipsButton_important" href="{$discord}" rel="external nofollow" target="_blank">Faceroll Discord</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>]]></template>
+ <template template_group="widgets" template_name="progression" template_data="$title, $raids, $bosses, $diffTags, $DbUtils" template_location="front" template_app="wowsuite"><![CDATA[<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="progressionSidebar">
+  <div class="progression2">
+		{{if member.group['can_update_progression'] }}
+			<a class="ipsSpacer_top ipsSpacer_half progUpdate" href="/progression/update" style="text-align: center;">Update Progression</a>
+		{{endif}}
+
+		{{foreach $raids as $raid}}
+			<table class="raid-table">
+				<th colspan="3" style="background-image: url('/uploads/{$raid['raid_image']}">
+					<div class="raid-wrapper" style="background-image: url('/uploads/{$raid['raid_image']}">
+						<div class="details-wrapper">
+							<span class="raid-label">{$raid['raid_name']}</span>
+							<div class="count-container">
+								{{foreach $diffTags as $tag}}
+									<div class="kill-count-wrap kill-count-{$tag}">
+										<span id="{$raid['raid_abv']}_{$tag}" class="killed-num">{$DbUtils->countBossKills($raid, $tag)}</span>
+										<div class="kill-num-sep"></div>
+										<span class="raid-boss-count">{$DbUtils->countBosses($raid)}</span>
+									</div>
+								{{endforeach}}
+							</div>
+						</div>
+					</div>
+				</th>
+				{{foreach $bosses as $boss}}
+					{{if $raid['raid_id'] == $boss['boss_instance']}}
+						<tr>
+							<td class='col-boss'>{$boss['boss_name']}</td>
+							<td class='col-link'>
+								{{if $boss['boss_video'] != NULL}}
+									<a href="{$boss['boss_video']}"><img class="video-icon" src="/Custom/Raids/hasVideo.png"></a>
+								{{else}}
+									<img class="video-icon" src="/Custom/Raids/noVideo.png">
+								{{endif}}
+							</td>
+							{{if $boss['boss_mythic'] == 1}}
+								<td class='col-diff'><div class="normal heroic mythic"></div></td>
+							{{elseif $boss['boss_heroic'] == 1}}
+								<td class='col-diff'><div class="normal heroic"></div></td>
+							{{elseif $boss['boss_normal'] == 1}}
+								<td class='col-diff'><div class="normal"></div></td>
+							{{else}}
+								<td class='col-diff'><div class="undefeated"></div></td>
+							{{endif}}
+						</tr>
+					{{endif}}
+				{{endforeach}}
+			</table>
+		{{endforeach}}
+  </div>
+</div>]]></template>
+ <template template_group="widgets" template_name="recruitment" template_data="$title, $link, $classes, $specs, $date" template_location="front" template_app="wowsuite"><![CDATA[<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="recruitSidebar">
+  <div class="recruit2">
+		<p style="text-align: center; font-size: 12px; padding-left: 10px; padding-right: 10px;">
+			Below is our current recruitment need, any roles marked as open are roles we're actively looking to fill. If your class & spec is listed as closed but you feel you're an exceptional player feel free to apply regardless!
+		</p>
+		{{if member.group['can_edit_needs'] }}
+			<a class="ipsSpacer_top ipsSpacer_half recUpdate" href="/recruitment/update" style="text-align: center;">Update Recruitment</a>
+		{{endif}}
+		<table class="recruit">
+			{{foreach $classes as $class}}
+				<tr class="{$class['class_abv']}">
+					<td class="classTitle">{$class['class_name']}</td>
+					<td class="specTitle">
+					{{foreach $specs as $spec}}
+						{{if $spec['spec_class'] == $class['class_id']}}
+							<img src="/uploads/{$spec['spec_icon']}" class="{{if $spec['spec_recruiting']}}open {{else}}closed{{endif}} {$class['class_abv']}_{$spec['spec_abv']} specImg" title="{$spec['spec_name']} {$class['class_name']} recruitment is {{if $spec['spec_recruiting']}}open{{else}}closed{{endif}}"> 
+						{{endif}}
+					{{endforeach}}
+					</td>
+				</tr>
+			{{endforeach}}
+		</table>
+		{{foreach $date as $updated}}
+			<span class="last-updated">Last Updated: {$updated['last_updated']}</span>
+		{{endforeach}}
+		<a class="ipsButton ipsButton_medium ipsButton_important raiderApply" href="{$link}" rel="external nofollow" target="_blank">Apply</a>
+  </div>
+</div>]]></template>
+ <template template_group="widgets" template_name="tier" template_data="$title, $raids, $bosses, $diffTags, $DbUtils, $showOld, $oldRaids" template_location="front" template_app="wowsuite"><![CDATA[<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="progressionSidebar">
+	<div class="progression2">
+		{{if member.group['can_update_progression'] }}
+			<a class="ipsSpacer_top ipsSpacer_half progUpdate" href="/progression/update" style="text-align: center;">Update Progression</a>
+		{{endif}}
+		{{foreach $raids as $raid}}
+			<table class="raid-table">
+				<th colspan="3" style="background-image: url('/uploads/{$raid['raid_image']}">
+					<div class="raid-wrapper">
+						<div class="details-wrapper">
+							<span class="raid-label">{$raid['raid_name']}</span>
+							<div class="count-container">
+								{{foreach $diffTags as $tag}}
+									<div class="kill-count-wrap kill-count-{$tag}">
+										<span id="{$raid['raid_abv']}_{$tag}" class="killed-num">{$DbUtils->countBossKills($raid, $tag)}</span>
+										<div class="kill-num-sep"></div>
+										<span class="raid-boss-count">{$DbUtils->countBosses($raid)}</span>
+									</div>
+								{{endforeach}}
+							</div>
+						</div>
+					</div>
+				</th>
+				{{foreach $bosses as $boss}}
+					{{if $raid['raid_id'] == $boss['boss_instance']}}
+						<tr>
+							<td class='col-boss'>{$boss['boss_name']}</td>
+							<td class='col-link'>
+								{{if $boss['boss_video'] != NULL}}
+									<a href="{$boss['boss_video']}"><img class="video-icon" src="/Custom/Raids/hasVideo.png"></a>
+								{{else}}
+									<img class="video-icon" src="/Custom/Raids/noVideo.png">
+								{{endif}}
+							</td>
+							{{if $boss['boss_mythic'] == 1}}
+								<td class='col-diff'><div class="normal heroic mythic"></div></td>
+							{{elseif $boss['boss_heroic'] == 1}}
+								<td class='col-diff'><div class="normal heroic"></div></td>
+							{{elseif $boss['boss_normal'] == 1}}
+								<td class='col-diff'><div class="normal"></div></td>
+							{{else}}
+								<td class='col-diff'><div class="undefeated"></div></td>
+							{{endif}}
+						</tr>
+					{{endif}}
+				{{endforeach}}
+			</table>
+		{{endforeach}}
+
+		{{if $showOld}}
+			<div class="old-header">
+				<h3>Previous Tiers</h3>
+			</div>
+
+			<div class="raid-container-old">
+				{{foreach $oldRaids as $old}}
+					<div class="raid-wrapper-old" style="background-image: url('/uploads/{$old['raid_image']}">
+						<div class="details-wrapper-old">
+							<span class="raid-label-old">{$old['raid_name']}</span>
+							<div class="count-container-old">
+								{{foreach $diffTags as $tag}}
+									<div class="kill-count-wrap-old kill-count-{$tag}" title="{$tag}">
+										<span id="{$old['raid_abv']}_{$tag}" class="killed-num">{$DbUtils->countBossKills($old, $tag)}</span>
+										<div class="kill-num-sep"></div>
+										<span class="raid-boss-count">{$DbUtils->countBosses($old)}</span>
+									</div>
+								{{endforeach}}
+							</div>
+						</div>
+					</div>
+				{{endforeach}}
+			</div>
+		{{endif}}
+	</div>
+</div>]]></template>
+ <css css_location="admin" css_app="wowsuite" css_attributes="" css_path="core" css_name="badges.css">.ipsBadge_mythic {
+	background: #FF8000;
+}
+
+.ipsBadge_heroic {
+	background: #0070DD;
+}
+
+.ipsBadge_normal {
+	background: #1EFF00;
+}
+
+.ipsBadge_undefeated {
+	background: #CCCCCC;
+}
+
+.ipsBadge_open {
+	background: #247800;
+}
+
+.ipsBadge_closed {
+	background: #ff0000;
+}</css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="modules" css_name="progression-update.css"><![CDATA[.boss-kill-container {
+	padding: 10px;
+}
+
+.raid-table td {
+	padding: 10px;
+}
+
+.normal, .heroic, .mythic {
+	display: inline-block;
+}
+
+.normal:before {
+	font-weight: bold;
+	content: "Normal";
+	color: #1EFF00;
+}
+
+.heroic:before {
+	font-weight: bold;
+	content: "Heroic";
+	color: #0070DD;
+}
+
+.mythic:before {
+	font-weight: bold;
+	content: "Mythic";
+	color: #FF8000;
+}
+
+.ipsToggle {
+	box-shadow: none !important;
+}
+
+.ipsFieldRow.ipsClearfix, .ipsFieldRow_content {
+	display: inline-block;
+	margin-left: 0px !important;
+}
+
+.ipsForm {
+	text-align: center;
+}
+
+.ipsFieldRow_checkbox .ipsCustomInput, html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label {
+    float: none !important;
+    top: 5px;
+}
+
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label, .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	max-width: 120px;
+	width: auto;
+	margin-left: 15px;
+}]]></css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="modules" css_name="recruitment-update.css">.class-block {&#13;
+    background-color: rgb(21, 21, 23);&#13;
+    color: #fff;&#13;
+}&#13;
+&#13;
+.class-head {&#13;
+    padding: 10px;&#13;
+    background: rgb(28, 28, 32);&#13;
+}&#13;
+&#13;
+.class-head span {&#13;
+    width: 100%;&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+.spec-block {&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+.spec-item {&#13;
+    padding: 15px;&#13;
+    border: 1px solid #000;&#13;
+}&#13;
+&#13;
+.spec-item label {&#13;
+    margin-bottom: 0 !important;&#13;
+}&#13;
+&#13;
+.btn-cont {&#13;
+    padding: 10px;&#13;
+}&#13;
+&#13;
+.class-block button {&#13;
+    width: 75%;&#13;
+    margin-left: auto;&#13;
+    margin-right: auto;&#13;
+}</css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="widgets" css_name="info_style.css">.ipsPad_half, .ipsApp ul.ipsPad_half, .ipsApp ol.ipsPad_half {&#13;
+	padding: 7px;&#13;
+}&#13;
+&#13;
+.info-sidebar {&#13;
+	text-align: center;&#13;
+}&#13;
+&#13;
+.info-sidebar .sidebar-section-header {&#13;
+	border-bottom: 1px solid #000000;&#13;
+	width: fit-content;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+}&#13;
+&#13;
+.info-sidebar .sidebar-section-content {&#13;
+	padding: 15px;&#13;
+}&#13;
+&#13;
+.info-sidebar .info-sidebar-section {&#13;
+	border-bottom: 1px solid rgb(235, 237, 240);&#13;
+}&#13;
+&#13;
+.info-sidebar #discord-container {&#13;
+	padding: 20px;&#13;
+	border-bottom: none;&#13;
+}</css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="widgets" css_name="progression_style.css">.raid-table {&#13;
+	width: 85%;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+.raid-table th {&#13;
+	padding: 0;&#13;
+	height: 60px;&#13;
+	max-width: 250px;&#13;
+	width: 100%;&#13;
+}&#13;
+&#13;
+.raid-table table, th, td {&#13;
+	border: 1px solid #000;&#13;
+	/* border: 1px solid rgba(0,0,0,0.04); */&#13;
+	padding: 5px;&#13;
+}&#13;
+&#13;
+.progUpdate {&#13;
+	width: 175px !important;&#13;
+	display: block !important;&#13;
+	margin-left: auto !important;&#13;
+	margin-right: auto !important;&#13;
+	margin-top: 15px !important;&#13;
+}&#13;
+&#13;
+.raid-container, .raid-container-old {&#13;
+	width: 85%;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+.raid-wrapper {&#13;
+	text-align: center;&#13;
+	padding: 0;&#13;
+	height: 60px;&#13;
+	max-width: 250px;&#13;
+	width: 100%;&#13;
+}&#13;
+&#13;
+.count-container {&#13;
+	background: rgb(1, 1, 1);&#13;
+}&#13;
+&#13;
+.kill-count-wrap {&#13;
+	padding: 3px;&#13;
+}&#13;
+&#13;
+.raid-label {&#13;
+	width: 100%;&#13;
+	text-align: center;&#13;
+	color: #fff;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.details-wrapper {&#13;
+	position: relative;&#13;
+	top: 10px;&#13;
+	width: fit-content;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+}&#13;
+&#13;
+.undefeated:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Undefeated&quot;;&#13;
+	color: #CCCCCC;&#13;
+}&#13;
+&#13;
+.normal:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Normal&quot;;&#13;
+	color: #1EFF00;&#13;
+}&#13;
+&#13;
+.heroic:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Heroic&quot;;&#13;
+	color: #0070DD;&#13;
+}&#13;
+&#13;
+.mythic:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Mythic&quot;;&#13;
+	color: #FF8000;&#13;
+}&#13;
+&#13;
+.kill-count-wrap, .kill-count-wrap-old, .kill-num-sep {&#13;
+	display: inline-block;&#13;
+}&#13;
+&#13;
+.kill-num-sep:before {&#13;
+	content: &quot;/&quot;;&#13;
+}&#13;
+&#13;
+.kill-count-mythic {&#13;
+	color: #FF8000;&#13;
+}&#13;
+&#13;
+.kill-count-heroic {&#13;
+	color: #0070DD;&#13;
+}&#13;
+&#13;
+.kill-count-normal {&#13;
+	color: #1EFF00;&#13;
+}&#13;
+&#13;
+.video-icon {&#13;
+	display: block;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+}&#13;
+&#13;
+.col-boss {&#13;
+	width: 55%;&#13;
+}&#13;
+&#13;
+.col-diff {&#13;
+	width: 35%;&#13;
+	text-align: center;&#13;
+}</css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="widgets" css_name="recruitment_style.css">/* Recruitment Sidebar Block */&#13;
+&#13;
+.specImg {&#13;
+	width: 32px;&#13;
+	max-width: 100%;&#13;
+	height: auto;&#13;
+	box-sizing: border-box;&#13;
+	vertical-align: middle;&#13;
+	display: inline;&#13;
+	border: 2px solid #000;&#13;
+}&#13;
+&#13;
+.recruitSidebar {&#13;
+	margin-top: 15px;&#13;
+	min-height: 150px;&#13;
+	margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+.recruit {&#13;
+	display: table;&#13;
+	text-align: center;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	width: 85%;&#13;
+}&#13;
+&#13;
+.recUpdate {&#13;
+	width: 175px !important;&#13;
+	display: block !important;&#13;
+	margin-left: auto !important;&#13;
+	margin-right: auto !important;&#13;
+	margin-top: 15px !important;&#13;
+}&#13;
+&#13;
+.last-updated {&#13;
+	width: 100%;&#13;
+	display: block;&#13;
+	text-align: center;&#13;
+	font-size: 10px;&#13;
+	color: #000;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.recruit table, th, td {&#13;
+	border: 1px solid #000;&#13;
+	/*border: 1px solid rgba(0,0,0,0.04);*/&#13;
+	padding: 5px;&#13;
+}&#13;
+&#13;
+.recruit th {&#13;
+	color: #fff;&#13;
+	background: #303030;&#13;
+	min-width: 93px;&#13;
+}&#13;
+&#13;
+.mage .classTitle {&#13;
+	color: #69ccf0;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.priest .classTitle {&#13;
+	color: #fff;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.warlock .classTitle {&#13;
+	color: #9482c9;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.druid .classTitle {&#13;
+	color: #ff7d0a;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.rogue .classTitle {&#13;
+	color: #fff569;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.monk .classTitle {&#13;
+	color: #00ff96;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.dh .classTitle {&#13;
+	color: #a330c9;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.shaman .classTitle {&#13;
+	color: #0070de;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.hunter .classTitle {&#13;
+	color: #abd473;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.paladin .classTitle {&#13;
+	color: #f58cba;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.warrior .classTitle {&#13;
+	color: #c79c6e;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.dk .classTitle {&#13;
+	color: #c41f3b;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.applyLink a {&#13;
+	color: #fff;&#13;
+	text-decoration: none;&#13;
+}&#13;
+&#13;
+.applyLink a:hover {&#13;
+	color: #29bdc6;&#13;
+	text-decoration: none;&#13;
+}&#13;
+&#13;
+.prioTitle:after {&#13;
+	color: #777;&#13;
+	font-weight: bold;&#13;
+	content: &quot;Closed&quot;;&#13;
+}&#13;
+&#13;
+.recruitHeader h3 {&#13;
+	font-size: 16px;&#13;
+	font-weight: 400;&#13;
+	padding: 11px 15px 11px 15px;&#13;
+	margin-top: 0;&#13;
+	background: #3d404a;&#13;
+	color: #919baf;&#13;
+}&#13;
+&#13;
+.rec-closed {&#13;
+	display: none;&#13;
+}&#13;
+&#13;
+.specTitle {&#13;
+	text-align: right;&#13;
+}&#13;
+&#13;
+.open {&#13;
+	opacity: 1;&#13;
+}&#13;
+&#13;
+.closed {&#13;
+	opacity: 0.3;&#13;
+}</css>
+ <css css_location="front" css_app="wowsuite" css_attributes="" css_path="widgets" css_name="tier_style.css">.raid-table {&#13;
+	width: 85%;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+.raid-table th {&#13;
+	padding: 0;&#13;
+	height: 60px;&#13;
+	max-width: 250px;&#13;
+	width: 100%;&#13;
+}&#13;
+&#13;
+.raid-table table, th, td {&#13;
+    border: 1px solid #000;&#13;
+    /* border: 1px solid rgba(0,0,0,0.04); */&#13;
+    padding: 5px;&#13;
+}&#13;
+&#13;
+.progUpdate {&#13;
+    width: 175px !important;&#13;
+    display: block !important;&#13;
+    margin-left: auto !important;&#13;
+    margin-right: auto !important;&#13;
+    margin-top: 15px !important;&#13;
+}&#13;
+&#13;
+.undefeated:before {&#13;
+	font-weight:bold;&#13;
+	content: &quot;Undefeated&quot;;&#13;
+	color: #CCCCCC;&#13;
+}&#13;
+&#13;
+.normal:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Normal&quot;;&#13;
+	color: #1EFF00;&#13;
+}&#13;
+&#13;
+.heroic:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Heroic&quot;;&#13;
+	color: #0070DD;&#13;
+}&#13;
+&#13;
+.mythic:before {&#13;
+	font-weight: bold;&#13;
+	content: &quot;Mythic&quot;;&#13;
+	color: #FF8000;&#13;
+}&#13;
+&#13;
+.kill-count-wrap, .kill-count-wrap-old, .kill-num-sep {&#13;
+	display: inline-block;&#13;
+}&#13;
+&#13;
+.kill-num-sep:before {&#13;
+	content: &quot;/&quot;;&#13;
+}&#13;
+&#13;
+.kill-count-mythic {&#13;
+	color: #FF8000;&#13;
+}&#13;
+&#13;
+.kill-count-heroic {&#13;
+	color: #0070DD;&#13;
+}&#13;
+&#13;
+.kill-count-normal {&#13;
+	color: #1EFF00;&#13;
+}&#13;
+&#13;
+.video-icon {&#13;
+	display:block;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+}&#13;
+&#13;
+.raid-container, .raid-container-old {&#13;
+	width: 85%;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+.raid-wrapper, .raid-wrapper-old {&#13;
+	text-align: center;&#13;
+	padding: 0;&#13;
+	height: 60px;&#13;
+	max-width: 250px;&#13;
+	width: 100%;&#13;
+}&#13;
+&#13;
+.raid-wrapper-old {&#13;
+	border: 1px solid #000;&#13;
+	margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+.count-container, .count-container-old {&#13;
+	background: rgb(1, 1, 1);&#13;
+}&#13;
+&#13;
+.kill-count-wrap, .kill-count-wrap-old {&#13;
+	padding: 3px;&#13;
+}&#13;
+&#13;
+.raid-label, .raid-label-old {&#13;
+	width: 100%;&#13;
+	text-align: center;&#13;
+	color: #fff;&#13;
+	font-weight: bold;&#13;
+}&#13;
+&#13;
+.details-wrapper, .details-wrapper-old {&#13;
+	position: relative;&#13;
+	top: 10px;&#13;
+	width: fit-content;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+}&#13;
+&#13;
+.old-header {&#13;
+	text-align: center;&#13;
+	width: 85%;&#13;
+	margin-left: auto;&#13;
+	margin-right: auto;&#13;
+	border-top: 1px solid #000;&#13;
+	border-bottom: 1px solid #000;&#13;
+	margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+.col-boss {&#13;
+	width: 65%;&#13;
+}&#13;
+&#13;
+.col-diff {&#13;
+	width: 25%;&#13;
+	text-align: center;&#13;
+}</css>
+</theme>

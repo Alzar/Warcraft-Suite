@@ -1,0 +1,55 @@
+<ips:template parameters="$title, $raids, $bosses, $diffTags, $DbUtils" />
+<h3 class='ipsType_reset ipsWidget_title'>
+	{$title}
+</h3>
+<div class="progressionSidebar">
+  <div class="progression2">
+		{{if member.group['can_update_progression'] }}
+			<a class="ipsSpacer_top ipsSpacer_half progUpdate" href="/progression/update" style="text-align: center;">Update Progression</a>
+		{{endif}}
+
+		{{foreach $raids as $raid}}
+			<table class="raid-table">
+				<th colspan="3" style="background-image: url('/uploads/{$raid['raid_image']}">
+					<div class="raid-wrapper" style="background-image: url('/uploads/{$raid['raid_image']}">
+						<div class="details-wrapper">
+							<span class="raid-label">{$raid['raid_name']}</span>
+							<div class="count-container">
+								{{foreach $diffTags as $tag}}
+									<div class="kill-count-wrap kill-count-{$tag}">
+										<span id="{$raid['raid_abv']}_{$tag}" class="killed-num">{$DbUtils->countBossKills($raid, $tag)}</span>
+										<div class="kill-num-sep"></div>
+										<span class="raid-boss-count">{$DbUtils->countBosses($raid)}</span>
+									</div>
+								{{endforeach}}
+							</div>
+						</div>
+					</div>
+				</th>
+				{{foreach $bosses as $boss}}
+					{{if $raid['raid_id'] == $boss['boss_instance']}}
+						<tr>
+							<td class='col-boss'>{$boss['boss_name']}</td>
+							<td class='col-link'>
+								{{if $boss['boss_video'] != NULL}}
+									<a href="{$boss['boss_video']}"><img class="video-icon" src="/Custom/Raids/hasVideo.png"></a>
+								{{else}}
+									<img class="video-icon" src="/Custom/Raids/noVideo.png">
+								{{endif}}
+							</td>
+							{{if $boss['boss_mythic'] == 1}}
+								<td class='col-diff'><div class="normal heroic mythic"></div></td>
+							{{elseif $boss['boss_heroic'] == 1}}
+								<td class='col-diff'><div class="normal heroic"></div></td>
+							{{elseif $boss['boss_normal'] == 1}}
+								<td class='col-diff'><div class="normal"></div></td>
+							{{else}}
+								<td class='col-diff'><div class="undefeated"></div></td>
+							{{endif}}
+						</tr>
+					{{endif}}
+				{{endforeach}}
+			</table>
+		{{endforeach}}
+  </div>
+</div>

@@ -1,0 +1,453 @@
+{
+    "wowsuite_raid_instances": {
+        "name": "wowsuite_raid_instances",
+        "columns": {
+            "raid_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 11,
+                "name": "raid_id",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "raid_name": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "raid_name",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "raid_abv": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "raid_abv",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "raid_image": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 0,
+                "name": "raid_image",
+                "type": "TEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "raid_current_tier": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "1",
+                "length": 1,
+                "name": "raid_current_tier",
+                "type": "TINYINT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "raid_id"
+                ]
+            }
+        },
+        "collation": "latin1_swedish_ci",
+        "engine": "InnoDB"
+    },
+    "wowsuite_instance_boss": {
+        "name": "wowsuite_instance_boss",
+        "columns": {
+            "boss_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 11,
+                "name": "boss_id",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_instance": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 11,
+                "name": "boss_instance",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_name": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 55,
+                "name": "boss_name",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_abv": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 55,
+                "name": "boss_abv",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_video": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 0,
+                "name": "boss_video",
+                "type": "TEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_normal": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 1,
+                "name": "boss_normal",
+                "type": "TINYINT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_heroic": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 1,
+                "name": "boss_heroic",
+                "type": "TINYINT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "boss_mythic": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 1,
+                "name": "boss_mythic",
+                "type": "TINYINT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "boss_id"
+                ]
+            },
+            "instance": {
+                "type": "key",
+                "name": "instance",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "boss_instance"
+                ]
+            }
+        },
+        "collation": "latin1_swedish_ci",
+        "engine": "InnoDB"
+    },
+    "wowsuite_recruit_class": {
+        "name": "wowsuite_recruit_class",
+        "columns": {
+            "class_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 11,
+                "name": "class_id",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "class_name": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "class_name",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "class_abv": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "class_abv",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "class_id"
+                ]
+            }
+        },
+        "collation": "latin1_swedish_ci",
+        "engine": "InnoDB"
+    },
+    "wowsuite_recruit_date": {
+        "name": "wowsuite_recruit_date",
+        "columns": {
+            "id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 11,
+                "name": "id",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "last_updated": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "12\/31\/2000",
+                "length": 10,
+                "name": "last_updated",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "id"
+                ]
+            }
+        },
+        "collation": "latin1_swedish_ci",
+        "engine": "InnoDB"
+    },
+    "wowsuite_recruit_spec": {
+        "name": "wowsuite_recruit_spec",
+        "columns": {
+            "spec_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 11,
+                "name": "spec_id",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "spec_class": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 11,
+                "name": "spec_class",
+                "type": "INT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "spec_name": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "spec_name",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "spec_abv": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 50,
+                "name": "spec_abv",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "spec_icon": {
+                "allow_null": true,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 0,
+                "name": "spec_icon",
+                "type": "TEXT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            },
+            "spec_recruiting": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "1",
+                "length": 1,
+                "name": "spec_recruiting",
+                "type": "TINYINT",
+                "unsigned": false,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "spec_id"
+                ]
+            },
+            "spec_class": {
+                "type": "key",
+                "name": "spec_class",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "spec_class"
+                ]
+            }
+        },
+        "collation": "latin1_swedish_ci",
+        "engine": "InnoDB"
+    }
+}

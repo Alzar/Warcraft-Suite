@@ -1,0 +1,22 @@
+{
+    "admin": {
+        "recruitment": {
+            "default_controller": "",
+            "protected": 0
+        },
+        "progression": {
+            "default_controller": "",
+            "protected": 0
+        }
+    },
+    "front": {
+        "recruitment": {
+            "default_controller": "",
+            "protected": 0
+        },
+        "progress": {
+            "default_controller": "",
+            "protected": 0
+        }
+    }
+}

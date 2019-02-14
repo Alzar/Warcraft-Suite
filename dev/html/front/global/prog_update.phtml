@@ -1,0 +1,13 @@
+<ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL, $raids, $bosses" />
+
+<div class="tab">
+    <form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm data-ipsFormSubmit>
+    {{foreach $raids as $raid}}
+        <div id="{$raid['raid_abv']}" class="tabcontent">
+        {{foreach $bosses as $boss}}
+            {{if $boss['boss_instance'] == $raid['raid_id']}}
+                <span>{$boss['boss_name']}</span><input type="checkbox">
+            {{endif}}
+        {{endforeach}}
+    {{endforeach}}
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javascript app="wowsuite">
+ <file javascript_app="wowsuite" javascript_location="front" javascript_path="controllers/widgets" javascript_name="ips.widgets.progression.js" javascript_type="controller" javascript_version="10000" javascript_position="1000050">;( function($, _, undefined){&#13;
+    &quot;use strict&quot;;&#13;
+    &#13;
+    ips.controller.register('wowsuite.front.widgets.progression', {&#13;
+&#13;
+        initialize: function() {&#13;
+            this.on( document, 'contentChange', this.contentChange );&#13;
+			this.setup();&#13;
+        },&#13;
+&#13;
+        contentChange: function () {&#13;
+            var parent = document.getElementById(&quot;raid-table&quot;);&#13;
+            var mythicKills = parent.getElementsByClassName(&quot;mythic&quot;);&#13;
+            console.log(&quot;Fuck My Life: &quot; + mythicKills.length);&#13;
+            &#13;
+            document.getElementById(&quot;uldir_mythic&quot;).textContent= mythicKills.length;&#13;
+        }&#13;
+&#13;
+    })&#13;
+}(jQuery, _));</file>
+</javascript>

@@ -1,0 +1,155 @@
+/* Recruitment Sidebar Block */
+
+.specImg {
+	width: 32px;
+	max-width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	vertical-align: middle;
+	display: inline;
+	border: 2px solid #000;
+}
+
+.recruitSidebar {
+	margin-top: 15px;
+	min-height: 150px;
+	margin-bottom: 15px;
+}
+
+.recruit {
+	display: table;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 85%;
+}
+
+.recUpdate {
+	width: 175px !important;
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	margin-top: 15px !important;
+}
+
+.last-updated {
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 10px;
+	color: #000;
+	font-weight: bold;
+}
+
+.recruit table, th, td {
+	border: 1px solid #000;
+	/*border: 1px solid rgba(0,0,0,0.04);*/
+	padding: 5px;
+}
+
+.recruit th {
+	color: #fff;
+	background: #303030;
+	min-width: 93px;
+}
+
+.mage .classTitle {
+	color: #69ccf0;
+	font-weight: bold;
+}
+
+.priest .classTitle {
+	color: #fff;
+	font-weight: bold;
+}
+
+.warlock .classTitle {
+	color: #9482c9;
+	font-weight: bold;
+}
+
+.druid .classTitle {
+	color: #ff7d0a;
+	font-weight: bold;
+}
+
+.rogue .classTitle {
+	color: #fff569;
+	font-weight: bold;
+}
+
+.monk .classTitle {
+	color: #00ff96;
+	font-weight: bold;
+}
+
+.dh .classTitle {
+	color: #a330c9;
+	font-weight: bold;
+}
+
+.shaman .classTitle {
+	color: #0070de;
+	font-weight: bold;
+}
+
+.hunter .classTitle {
+	color: #abd473;
+	font-weight: bold;
+}
+
+.paladin .classTitle {
+	color: #f58cba;
+	font-weight: bold;
+}
+
+.warrior .classTitle {
+	color: #c79c6e;
+	font-weight: bold;
+}
+
+.dk .classTitle {
+	color: #c41f3b;
+	font-weight: bold;
+}
+
+.applyLink a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.applyLink a:hover {
+	color: #29bdc6;
+	text-decoration: none;
+}
+
+.prioTitle:after {
+	color: #777;
+	font-weight: bold;
+	content: "Closed";
+}
+
+.recruitHeader h3 {
+	font-size: 16px;
+	font-weight: 400;
+	padding: 11px 15px 11px 15px;
+	margin-top: 0;
+	background: #3d404a;
+	color: #919baf;
+}
+
+.rec-closed {
+	display: none;
+}
+
+.specTitle {
+	text-align: right;
+}
+
+.open {
+	opacity: 1;
+}
+
+.closed {
+	opacity: 0.3;
+}

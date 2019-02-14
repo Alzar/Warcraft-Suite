@@ -1,0 +1,23 @@
+.ipsBadge_mythic {
+	background: #FF8000;
+}
+
+.ipsBadge_heroic {
+	background: #0070DD;
+}
+
+.ipsBadge_normal {
+	background: #1EFF00;
+}
+
+.ipsBadge_undefeated {
+	background: #CCCCCC;
+}
+
+.ipsBadge_open {
+	background: #247800;
+}
+
+.ipsBadge_closed {
+	background: #ff0000;
+}

@@ -1,0 +1,53 @@
+.boss-kill-container {
+	padding: 10px;
+}
+
+.raid-table td {
+	padding: 10px;
+}
+
+.normal, .heroic, .mythic {
+	display: inline-block;
+}
+
+.normal:before {
+	font-weight: bold;
+	content: "Normal";
+	color: #1EFF00;
+}
+
+.heroic:before {
+	font-weight: bold;
+	content: "Heroic";
+	color: #0070DD;
+}
+
+.mythic:before {
+	font-weight: bold;
+	content: "Mythic";
+	color: #FF8000;
+}
+
+.ipsToggle {
+	box-shadow: none !important;
+}
+
+.ipsFieldRow.ipsClearfix, .ipsFieldRow_content {
+	display: inline-block;
+	margin-left: 0px !important;
+}
+
+.ipsForm {
+	text-align: center;
+}
+
+.ipsFieldRow_checkbox .ipsCustomInput, html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label {
+    float: none !important;
+    top: 5px;
+}
+
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label, .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	max-width: 120px;
+	width: auto;
+	margin-left: 15px;
+}

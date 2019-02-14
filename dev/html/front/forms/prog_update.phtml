@@ -1,0 +1,28 @@
+<ips:template parameters="$raids, $bosses, $diffTags, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar=NULL, $form=NULL, $errorTabs=array()" />
+
+<div class='ipsBox'>
+    <form accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm data-ipsFormSubmit>
+        <input type="hidden" name="{$id}_submitted" value="1">
+        {{foreach $raids as $raid}}
+            <div id="raid_{$raid['raid_abv']}" class="raid-container">
+            <table class="raid-table">
+            <tr><th colspan=4>{$raid['raid_name']}</th></tr>
+            {{foreach $bosses as $boss}}
+                {{if $boss['boss_instance'] == $raid['raid_id']}}
+                    <tr class="boss-name"><th colspan=4>{$boss['boss_name']}</th></tr>
+                    <tr class="boss-kill-container">
+                        {{foreach $diffTags as $diff}}
+                            <td><label class="{$diff}" for="boss_{$boss['boss_abv']}_{$diff}"></label><input class="ipsToggle" type="hidden" name="boss_{$boss['boss_abv']}_{$diff}"><input class="ipsToggle" type="checkbox" name="boss_{$boss['boss_abv']}_{$diff}_checkbox" {{if $boss['boss_'.$diff] == 1}} checked {{endif}}></td>
+                        {{endforeach}}
+                        <td><input type="text" name="boss_{$boss['boss_abv']}_video" placeholder="Kill Video Link" {{if $boss['boss_video'] != NULL}} value="{$boss['boss_video']}" {{endif}}></td>
+                    </tr>
+                {{endif}}
+            {{endforeach}}
+            </table>
+        {{endforeach}}
+
+        <div class='ipsAreaBackground ipsPad ipsType_center'>
+			<button type='submit' class='ipsButton ipsButton_medium ipsButton_primary' tabindex="1" accesskey="s" role="button">Update</button>
+		</div>
+    </form>
+</div>

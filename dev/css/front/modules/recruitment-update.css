@@ -1,0 +1,37 @@
+.class-block {
+    background-color: rgb(21, 21, 23);
+    color: #fff;
+}
+
+.class-head {
+    padding: 10px;
+    background: rgb(28, 28, 32);
+}
+
+.class-head span {
+    width: 100%;
+    text-align: center;
+}
+
+.spec-block {
+    text-align: center;
+}
+
+.spec-item {
+    padding: 15px;
+    border: 1px solid #000;
+}
+
+.spec-item label {
+    margin-bottom: 0 !important;
+}
+
+.btn-cont {
+    padding: 10px;
+}
+
+.class-block button {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
