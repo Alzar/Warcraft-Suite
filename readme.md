@@ -1,4 +1,4 @@
-#Warcraft Suite
+# Warcraft Suite
 
 Warcraft Suite is an Invision Power Board application which aims to add certain functionality desired for facilitating guild website functionality. It provides an easily customizable raid progress widget and class & spec recruitment widget.
 
